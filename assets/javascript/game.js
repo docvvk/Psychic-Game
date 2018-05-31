@@ -9,7 +9,7 @@ var guessesLeft = 9;
 document.onkeyup = function(event) {
     
     // press any key to start the function
-    var userGuess = event.key;
+    var userGuess = event.key.toLowerCase();
     
     // computer guess is one of the computer choices
     var compGuess = compChoices[Math.floor(Math.random()* compChoices.length)];
@@ -33,12 +33,14 @@ document.onkeyup = function(event) {
     };
     
     // adding html through an event listner
-    document.querySelector("#user_Guess").innerHTML =  userGuess;
-    document.querySelector("#wins").innerHTML =  wins;
-    document.querySelector("#losses").innerHTML =  losses;
-    document.querySelector("#guess_Left").innerHTML =  guessesLeft;
-    document.querySelector("#guess_Arr").innerHTML =  guessesSoFar;
+    newFunction(userGuess);
 };
-
+function newFunction(userGuess) {
+    document.querySelector("#user_Guess").innerHTML = userGuess;
+    document.querySelector("#wins").innerHTML = wins;
+    document.querySelector("#losses").innerHTML = losses;
+    document.querySelector("#guess_Left").innerHTML = guessesLeft;
+    document.querySelector("#guess_Arr").innerHTML = guessesSoFar;
+};
 
 
