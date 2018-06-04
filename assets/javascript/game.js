@@ -5,11 +5,17 @@ var losses = 0;
 var guessesSoFar = []; // array to push the choices
 var guessesLeft = 9;
 
+// adding game sounds
+var keySound = new Audio("./assets/sounds/typewriter-key.wav");
+var winSound = new Audio("./assets/sounds/you-win.wav");
+var lostSound = new Audio("./assets/sounds/you-lose.wav");
+
 // adding key press event to the document
 document.onkeyup = function(event) {
     
     // press any key to start the function
-    var userGuess = event.key.toLowerCase();
+    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+    keySound.play();
     
     // computer guess is one of the computer choices
     var compGuess = compChoices[Math.floor(Math.random()* compChoices.length)];
@@ -19,13 +25,15 @@ document.onkeyup = function(event) {
     
     // game starts
     if (userGuess == compGuess) {
+        winSound.play();
         wins++;
         alert("Yeah !! You Won !!")
         guessesLeft = 9; //reset guesses left to 9 
         guessesSoFar.length = 0; //reset getSoFar array to be empty   
     } else if (guessesLeft == 0) {
+        lostSound.play();
         alert("You Lost ! Try Again !");
-        guessesLeft = 9; //reset guesses left to 9
+        guessesLeft = 19; //reset guesses left to 9
         guessesSoFar.length = 0;  //reset getSoFar array to be empty
         losses++;
     } else if (userGuess !== compGuess) {
