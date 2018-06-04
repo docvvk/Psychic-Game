@@ -33,7 +33,7 @@ document.onkeyup = function(event) {
     } else if (guessesLeft == 0) {
         lostSound.play();
         alert("You Lost ! Try Again !");
-        guessesLeft = 19; //reset guesses left to 9
+        guessesLeft = 9; //reset guesses left to 9
         guessesSoFar.length = 0;  //reset getSoFar array to be empty
         losses++;
     } else if (userGuess !== compGuess) {
